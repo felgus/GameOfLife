@@ -1,6 +1,9 @@
+
+function GameOfLife_CTH;
 clear;
 close all;
 clc;
+
 
 n = 10;
 
@@ -20,13 +23,14 @@ while 1
     i=floor(i); j=floor(j);
     if Knapp==1
     V(i,j)=1;
-    fill([i i+1 i+1 i],[j j j+1 j+1],'g')
+    fill([i i+1 i+1 i],[j j j+1 j+1],'k')
 else
      break
     end
 end
+end
 
-antal=sum(sum(V(i-1:i+1,j-1:j+1)))-V(i,j);
-
-igrannar=max(1,i-1):min(n,i+1);
-jgrannar=max(1,j-1):min(n,j+1);
+% antal=sum(sum(V(i-1:i+1,j-1:j+1)))-V(i,j);
+% 
+% igrannar=max(1,i-1):min(n,i+1);
+% jgrannar=max(1,j-1):min(n,j+1);
