@@ -2,17 +2,19 @@
 clear;
 clc;
 
-% n=100;
-% A=zeros(n);
-% A=floor(rand(n)*5);
-% %A=floor(rand(100)*5);
-%  A(A>0)=1;
-%  A=A+1;A(A==2)=0;
+n=100;
+A=zeros(n);
+A=floor(rand(n)*5);
+A=floor(rand(100)*5);
+ A(A>0)=1;
+ A=A+1;A(A==2)=0;
+
+%A = starting matrix
 
 %Jellyfish pattern
-A=zeros(170);
-A([50:70,110:130],[30,80,100,150])=1;
-A([30,80,100,150],[50:70,110:130])=1;
+% A=zeros(170);
+% A([50:70,110:130],[30,80,100,150])=1;
+% A([30,80,100,150],[50:70,110:130])=1;
 
 %Glider pattern
 % A=zeros(110,380);
@@ -36,7 +38,8 @@ A= mat2gray(A);
 %figure(1);
 imshow(A);
 
-A=Bnd(A,0); 
+
+A=boundary1(A,0); 
 [d1,d2]=size(A);
 %disp('the extended binary image');
 
@@ -53,23 +56,27 @@ stp=false; % to stop when if no new configurations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Play ^_^
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-while ~stp & (t<50) % repeat for (t<N) generations
+while ~stp & (t<100) % repeat for (t<N) generations
     % for each cell 
+    B2=B;
     for i=2:d1-1
         for j=2:d2-1           
             % apply rules     
-            A(i,j)=GOL(A,B,i,j);
+            B2(i,j)=GOL(B,i,j);
         end
     end 
+    B=B2;
     % visualize what happened
     %disp('the CA image');
-    imshow(A);    
+    imshow(~B);    
     drawnow;
 %    pause
     % save B 
     if A==B
        stp=true; % no more new states
     end
-    B=A;  
-    t=t+1;  
+    A=B;
+      
+    t=t+1;
+    
 end  

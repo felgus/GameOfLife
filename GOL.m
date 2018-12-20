@@ -1,4 +1,4 @@
-function s=GOL (A,B,i,j)
+function s=GOL (B,i,j)
 % game of life rule
 sm=0;
 % count number of alive neighbors
