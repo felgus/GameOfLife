@@ -3,10 +3,10 @@ function bA= boundary1(A,k)
 [d1, d2]=size(A);
 d1=d1+2; d2=d2+2;
 X=ones(d1,d2);
-X=im2bw(X);
+X=imbinarize(X);
 X(2:d1-1,2:d2-1)=A;
-imshow(X);
-whos A X
+pcolor(X);
+%whos A X
 if k==0 % Reflection
    X(  1  , 2:d2-1)=A(end , :);
    X(  d1 , 2:d2-1)=A( 1  , :);

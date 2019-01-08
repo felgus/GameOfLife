@@ -1,0 +1,8 @@
+Rules and basic principles
+
+Any live cell with fewer than two live neighbors dies 
+Any live cell with two or three live neighbors lives on to the next generation.
+Any live cell with more than three live neighbors dies
+Any dead cell with exactly three live neighbors becomes a live cell
+
+The only input by the user is the initial state of the game (i.e. starting matrix), the game then plays itself until it reaches a steady state or is terminated. Thus the starting matrix and its layout is crucial for the way the game is played.
