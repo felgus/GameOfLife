@@ -4,7 +4,7 @@ clc;
 
 
 %For random starting pattern, 100x100 matrix
-% n=100;
+%n=29;
 % A=zeros(n); %A = starting matrix
 % A=floor(rand(n)*5);
 % A(A>0)=1;
@@ -13,16 +13,16 @@ clc;
 % visualize the initial states
 
 %Starting input
-A=zeros(11,38);
-A([6:7],[2:3])=1;
-A([4:5],[36:37])=1;
-A([6:8],[12,18])=1;
-A([5,9],[13,17])=1;
-A([4,10],[14:15])=1;
-A([7],[16,19])=1;
-A([4:6],[22:23])=1;
-A([3,7],[24])=1;
-A([2:3,7:8],[26])=1;
+A=zeros(18);
+A(5:7,[7,12])=1;
+A(8,5:14)=1;
+A(9,[4,6,13,15])=1;
+A(10,[8,11])=1;
+A(11,[3:4,9:10,15:16])=1;
+A([12,14],[2:4,15:17])=1;
+A(13,[2,4,15,17])=1;
+
+
 
 A=boundary1(A,0); 
 [d1,d2]=size(A);
@@ -41,7 +41,8 @@ stp=false; % to stop when if no new configurations
 %%%%%%%%%%%%
 
  
-video = VideoWriter('Population utveckling.avi');
+video = VideoWriter('Game of Crabs.avi');
+%video.FrameRate = 15;
 open(video);
     while ~stp && (t<500) %t is the number of generations
     % repeat for (t<N) generations for each cell  
@@ -56,7 +57,7 @@ open(video);
     % visualize what happened
     figure(2)
     pcolor(~B);
-    title('Population utveckling'); 
+    title('Le Crabe'); 
     drawnow; 
     if A==B
        stp=true; % no more new states
@@ -64,6 +65,8 @@ open(video);
     A=B;    
     t=t+1;
     F = getframe(gcf); 
+    pause();
     writeVideo(video,F);
+   
     end
     close(video);
